@@ -8,29 +8,67 @@ import json
 import math
 import re
 import subprocess
-import pyautogui
-import argparse
-import platform
-import Xlib.display
-import Xlib.X
-import Xlib.Xutil  # not sure if Xutil is necessary
 
-from prompt_toolkit import prompt
-from prompt_toolkit.shortcuts import message_dialog
-from prompt_toolkit.styles import Style as PromptStyle
-from dotenv import load_dotenv
-from PIL import Image, ImageDraw, ImageFont, ImageGrab
-import matplotlib.font_manager as fm
-from openai import OpenAI
+try:
+    import pyautogui
+except ImportError:
+    pass
+
 import sys
 
+try:
+    from dotenv import load_dotenv
+except ImportError:
+    pass
 
+try:
+    import Xlib.display
+    import Xlib.X
+    import Xlib.Xutil
+except ImportError:
+    pass
+
+try:
+    from openai import OpenAI
+except ImportError:
+    pass
+
+try:
+    import pyautogui
+except ImportError:
+    pass
+
+try:
+    import Xlib.display
+    import Xlib.X
+    import Xlib.Xutil
+except ImportError:
+    pass
+
+try:
+    from PIL import Image, ImageDraw, ImageFont, ImageGrab
+except ImportError:
+    pass
+
+try:
+    import matplotlib.font_manager as fm
+except ImportError:
+    pass
+
+import sys
+
+from dotenv import load_dotenv
 load_dotenv()
 
 DEBUG = False
 
+try:
+    from openai import OpenAI
+except ImportError:
+    pass
+
 client = OpenAI()
-client.api_key = os.getenv("OPENAI_API_KEY")
+client.api_key = os.getenv("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")
 client.base_url = os.getenv("OPENAI_API_BASE_URL", client.base_url)
 
 monitor_size = {
